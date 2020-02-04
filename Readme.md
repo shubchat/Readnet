@@ -23,4 +23,4 @@ All the short stories on readnet are free from copyright as that is the only way
 
 Running the script for [Data Extraction](Content_creation/Data_extract.py) will create a folder called books in the root directory and number of books you have asked to be downloaded would be placed as a text file in the [books](books) folder
 
-Example:`python Content_creation/Data_extract.py 25``` will download twenty five short stories in the books folder
+Example:`python Content_creation/Data_extract.py 25` will download twenty five short stories in the books folder
