@@ -19,4 +19,8 @@ There are six stage of development that need to be followed:
 
 ## Step-1:Content creation
 
-All of the short stories on readnet are free from copyright as that is the only way we could make it available no charge for the userbase. One of the largest repository for free out of copyright books and stories is [project guttenberg](https://www.gutenberg.org/) .<b>All the content that you would find on the site has been extracted from Project Gutenberg(Please consider a small [donation](https://www.gutenberg.org/wiki/Gutenberg:Project_Gutenberg_Needs_Your_Donation) to this outstanding initiative)<b>.
+All the short stories on readnet are free from copyright as that is the only way we could make it available for no charge to the readers. One of the largest repository for free out of copyright books and stories is [project guttenberg](https://www.gutenberg.org/) .<b>All the content that you would find on the site has been extracted from the guttenberg portal(Please consider a small [donation](https://www.gutenberg.org/wiki/Gutenberg:Project_Gutenberg_Needs_Your_Donation) to this outstanding initiative)<b>.
+
+Running the script for [Data Extraction](Content_creation/Data_extract.py) will create a folder called books in the root directory and number of books you have asked to be downloaded would be placed as a text file in the [books](books) folder
+
+Example:`python Content_creation/Data_extract.py` 25 will download twenty five short stories in the books folder
