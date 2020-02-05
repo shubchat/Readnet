@@ -49,4 +49,5 @@ Where,
 - user_name-role under which you want to login to postgres
 - password-Password if exists
 - books-Name of the database to be created in postgres
-  The above code will create a table <b>metadata<b> into a database called books on your locak postgres server.
+
+  The above code will create a table **metadata** into a database called books on your locak postgres server.
