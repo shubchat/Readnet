@@ -12,9 +12,11 @@ def get_metadata():
     Title = []
     Author = []
     Language = []
+    content = []
     for a in os.listdir(path="books"):
         if a.endswith(".txt"):
-            with open(f"books/{a}", "r", errors="ignore") as f:
+            with open(f"books/{a}", "r+", errors="ignore") as f:
+                text = f.read()
                 Title1 = []
                 Author1 = []
                 Language1 = []
@@ -33,7 +35,9 @@ def get_metadata():
             Title.append(Title1)
             Author.append(Author1)
             Language.append(Language1)
+            content.append(text)
     df_books = pd.DataFrame()
+    stories = pd.DataFrame(columns=["bookno", "content"])
     df_books["bookno"] = bookno
     df_books["title"] = [" ".join(T) for T in Title]
     df_books["author"] = [" ".join(A) for A in Author]
@@ -41,14 +45,14 @@ def get_metadata():
     df_books["title"] = df_books["title"].str.lstrip("Title:")
     df_books["author"] = df_books["author"].str.lstrip("Author:")
     df_books["lang"] = df_books["lang"].str.lstrip("Language:")
-    # df_books.to_csv("check.csv", index=False)
+    stories["bookno"] = bookno
+    stories["content"] = content
 
-    return df_books
-    # return "All done"
+    return df_books, stories
 
 
 def push_metadata_todb(user_name, password, db_name):
-    df_books = get_metadata()
+    df_books, stories = get_metadata()
     con = psycopg2.connect(
         dbname="postgres", user=user_name, host="", password=password
     )
@@ -57,6 +61,7 @@ def push_metadata_todb(user_name, password, db_name):
     cur.execute(sql.SQL("CREATE DATABASE {}").format(sql.Identifier(db_name)))
     engine = create_engine(f"postgresql:///{db_name}")
     df_books.to_sql("metadata", engine, if_exists="append", index=False)
+    stories.to_sql("short_stories", engine, if_exists="append", index=False)
     return "Data uploaded to DB"
 
 

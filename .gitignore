@@ -1,3 +1,5 @@
 .vscode
 env/
 books/
+node_modules
+Recom_logic/__pycache__/Algo.cpython-36.pyc
